@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\Category\CategoryController;
+use App\Http\Controllers\Main\IndexController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,6 +15,21 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', [IndexController::class, 'index'])->name('main.index');
+
+
+//                        FIRST OPTION
+
+//Route::group(['prefix' => 'categories'], function () {
+//    Route::get('/', App\Http\Controllers\Category\IndexController::class)->name('categories.index');
+//    Route::get('/create', App\Http\Controllers\Category\CreateController::class)->name('categories.create');
+//    Route::post('/', App\Http\Controllers\Category\StoreController::class)->name('categories.store');
+//    Route::get('/{category}/edit', App\Http\Controllers\Category\EditController::class)->name('categories.edit');
+//    Route::get('/{category}', App\Http\Controllers\Category\ShowController::class)->name('categories.show');
+//    Route::patch('/{category}', App\Http\Controllers\Category\UpdateController::class)->name('categories.update');
+//    Route::delete('/{category}', App\Http\Controllers\Category\DeleteController::class)->name('categories.delete');
+//});
+
+
+//                        SECOND OPTION
+Route::resource('/categories', CategoryController::class);
