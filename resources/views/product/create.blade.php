@@ -6,7 +6,7 @@
         <div class="container-fluid">
             <div class="row mb-2">
                 <div class="col-sm-6">
-                    <h1 class="m-0">Редагувати категорії</h1>
+                    <h1 class="m-0">Додати продукт</h1>
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
@@ -23,14 +23,23 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('categories.update', $category->id) }}" method="post">
+                <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
-                    @method('patch')
                     <div class="form-group">
-                        <input type="text" name="title" value="{{$category->title}}" class="form-control" placeholder="Найменування">
+                        <input type="text" name="title" class="form-control" placeholder="Найменування">
                     </div>
                     <div class="form-group">
-                        <input type="submit" class="иет btn-primary" value="Редагувати">
+                        <input type="text" name="description" class="form-control" placeholder="Опис">
+                    </div>
+                    <div class="form-group">
+                        <select name="category_id[]" class="tags" multiple="multiple" data-placeholder="Оберіть тег" style="width: 100%;">
+                            @foreach($categories as $category)
+                                <option value="{{$category->id}}">{{$category->title}}</option>
+                            @endforeach
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <input type="submit" class="иет btn-primary" value="Додати">
                     </div>
                 </form>
             </div>
