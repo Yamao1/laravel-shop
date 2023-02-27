@@ -33,7 +33,7 @@
                         <div class="card-header">
                             <form action="{{ route('filter.index') }}" method="get" >
                                 <div class="form-group">
-                                    <select name="category_id" class="tags"  data-placeholder="Оберіть тег" style="width: 10%;">
+                                    <select name="category_id" class="tags"  data-placeholder="Оберіть категорію" style="width: 10%;">
                                         <option  disabled selected>Тег</option>
                                         @foreach($categories as $category)
                                             <option value="{{$category->title }}">{{$category->title }}</option>
@@ -41,7 +41,7 @@
                                     </select>
                                 </div>
                                 <div class="form-group">
-                                    <input type="submit" class="btn btn-primary" value="Фільтрувати по тегу">
+                                    <input type="submit" class="btn btn-primary" value="Фільтрувати по категорії">
                                 </div>
                             </form>
                             <form action="{{ route('products.index') }}" method="get" >

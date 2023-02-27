@@ -32,7 +32,7 @@ class StoreRequest extends FormRequest
     {
         return [
             'title.required' => 'Це поле необхідно заповнити',
-            'title.unique' => 'Такий тег вже існує',
+            'title.unique' => 'Така категорія вже існує',
 
         ];
 

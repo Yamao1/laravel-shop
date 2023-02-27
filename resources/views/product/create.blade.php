@@ -34,7 +34,7 @@
                         @error('description') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
-                        <select name="category_id[]" class="tags" multiple="multiple" data-placeholder="Оберіть тег" style="width: 100%;">
+                        <select name="category_id[]" class="tags" multiple="multiple" data-placeholder="Оберіть категорію" style="width: 100%;">
                             @foreach($categories as $category)
                                 <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
