@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Головна</li>
+                        <a href="{{ route('main.index') }}" >Головна</a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -23,7 +23,7 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('product.update', $product->id) }}" method="post">
+                <form action="{{ route('products.update', $product->id) }}" method="post">
                     @csrf
                     @method('patch')
                     <div class="form-group">
@@ -38,6 +38,7 @@
                                 <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
                         </select>
+                        @error('category_id') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" class="иет btn-primary" value="Редагувати">

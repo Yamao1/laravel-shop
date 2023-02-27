@@ -24,7 +24,17 @@ class UpdateRequest extends FormRequest
     public function rules()
     {
         return [
-           'title'=> 'required|string'
+            'title'=> 'required|string|unique:categories'
         ];
+    }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Це поле необхідно заповнити',
+            'title.unique' => 'Такий тег вже існує',
+
+        ];
+
     }
 }

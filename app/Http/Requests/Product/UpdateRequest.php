@@ -29,4 +29,15 @@ class UpdateRequest extends FormRequest
             'category_id' => 'array|nullable',
         ];
     }
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Це поле необхідно заповнити',
+            'description.required' => 'Це поле необхідно заповнити',
+            'category_id.required' => 'Це поле необхідно заповнити',
+
+        ];
+
+    }
 }

@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Головна</li>
+                        <a href="{{ route('main.index') }}" >Головна</a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -27,9 +27,9 @@
                     <div class="card">
                         <div class="card-header d-flex p-3">
                             <div class="mr-3">
-                                <a href="{{route('product.edit',$product->id)}}" class="btn btn-primary">Редагувати</a>
+                                <a href="{{route('products.edit',$product->id)}}" class="btn btn-primary">Редагувати</a>
                             </div>
-                            <form action="{{ route('product.delete', $product->id) }}" method="post">
+                            <form action="{{ route('products.destroy', $product->id) }}" method="post">
                                 @csrf
                                 @method('delete')
                                 <input type="submit" class="btn btn-danger" value="Видалити">

@@ -26,7 +26,19 @@ class StoreRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'category_id' => 'array|nullable',
+            'category_id' => 'array|required',
         ];
+    }
+
+
+    public function messages()
+    {
+        return [
+            'title.required' => 'Це поле необхідно заповнити',
+            'description.required' => 'Це поле необхідно заповнити',
+            'category_id.required' => 'Це поле необхідно заповнити',
+
+        ];
+
     }
 }

@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Головна</li>
+                        <a href="{{ route('main.index') }}" >Головна</a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -23,13 +23,15 @@
         <div class="container-fluid">
             <!-- Small boxes (Stat box) -->
             <div class="row">
-                <form action="{{ route('product.store') }}" method="post" enctype="multipart/form-data">
+                <form action="{{ route('products.store') }}" method="post" enctype="multipart/form-data">
                     @csrf
                     <div class="form-group">
                         <input type="text" name="title" class="form-control" placeholder="Найменування">
+                        @error('title') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
                         <input type="text" name="description" class="form-control" placeholder="Опис">
+                        @error('description') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
                         <select name="category_id[]" class="tags" multiple="multiple" data-placeholder="Оберіть тег" style="width: 100%;">
@@ -37,6 +39,7 @@
                                 <option value="{{$category->id}}">{{$category->title}}</option>
                             @endforeach
                         </select>
+                        @error('category_id') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" class="иет btn-primary" value="Додати">

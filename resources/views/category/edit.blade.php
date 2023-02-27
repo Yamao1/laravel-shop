@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Головна</li>
+                        <a href="{{ route('main.index') }}" >Головна</a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -28,6 +28,7 @@
                     @method('patch')
                     <div class="form-group">
                         <input type="text" name="title" value="{{$category->title}}" class="form-control" placeholder="Найменування">
+                        @error('title') <span class="text-danger error"><small>{{ $message }}</small></span>@enderror
                     </div>
                     <div class="form-group">
                         <input type="submit" class="иет btn-primary" value="Редагувати">

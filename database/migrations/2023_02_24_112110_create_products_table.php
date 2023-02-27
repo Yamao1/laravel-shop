@@ -17,7 +17,6 @@ class CreateProductsTable extends Migration
             $table->id();
             $table->string('title')->nullable();
             $table->string('description')->nullable();
-//            $table->foreignId('category_id')->nullable()->index()->constrained('categories');
             $table->timestamps();
         });
     }

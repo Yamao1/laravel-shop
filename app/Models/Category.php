@@ -11,6 +11,6 @@ class Category extends Model
     protected $guarded = false;
 
     public function product(){
-        return $this->belongsToMany(Product::class);
+        return $this->belongsToMany(Product::class)->withPivot('category_id');
     }
 }

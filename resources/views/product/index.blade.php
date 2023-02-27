@@ -10,7 +10,7 @@
                 </div><!-- /.col -->
                 <div class="col-sm-6">
                     <ol class="breadcrumb float-sm-right">
-                        <li class="breadcrumb-item active">Головна</li>
+                        <a href="{{ route('main.index') }}" >Головна</a>
                     </ol>
                 </div><!-- /.col -->
             </div><!-- /.row -->
@@ -26,8 +26,34 @@
                 <div class="col-12">
                     <div class="card">
                         <div class="card-header">
-                            <a href="{{route('product.create')}}" class="btn btn-primary">Додати</a>
+                            <a href="{{route('products.create')}}" class="btn btn-primary">Додати Продукт</a>
                         </div>
+
+                        @if( $categories->isNotEmpty())
+                        <div class="card-header">
+                            <form action="{{ route('filter.index') }}" method="get" >
+                                <div class="form-group">
+                                    <select name="category_id" class="tags"  data-placeholder="Оберіть тег" style="width: 10%;">
+                                        <option  disabled selected>Тег</option>
+                                        @foreach($categories as $category)
+                                            <option value="{{$category->title }}">{{$category->title }}</option>
+                                        @endforeach
+                                    </select>
+                                </div>
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Фільтрувати по тегу">
+                                </div>
+                            </form>
+                            <form action="{{ route('products.index') }}" method="get" >
+                                <div class="form-group">
+                                    <input type="submit" class="btn btn-primary" value="Очистити фыльтр">
+                                </div>
+                            </form>
+                        </div>
+                        @endif
+                        @if( $categories->isEmpty())
+                            <span>Немає категорій для фільтру</span>
+                        @endif
                         <div class="card-body table-responsive p-0">
                             <table class="table table-hover text-nowrap">
                                 <thead>
@@ -42,7 +68,7 @@
                                 @foreach($products as $product)
                                     <tr>
                                         <td>{{$product->id}}</td>
-                                        <td><a href="{{route('product.show', $product->id)}}">{{$product->title}}</a>
+                                        <td><a href="{{route('products.show', $product->id)}}">{{$product->title}}</a>
                                         </td>
                                         <td>{{$product->description}}</td>
                                         <td>{{$product->categories()->pluck('title')->implode(', ')}}</td>
@@ -58,4 +84,16 @@
         </div><!-- /.container-fluid -->
     </section>
     <!-- /.content -->
+
+@endsection
+
+@section('js')
+    <script>
+        $(document).ready(function (){
+            $('.filter1').click(function (){
+                let order = $(this).data('order')
+                console.log(order)
+            })
+        })
+    </script>
 @endsection
