@@ -26,7 +26,7 @@ class UpdateRequest extends FormRequest
         return [
             'title' => 'required',
             'description' => 'required',
-            'category_id' => 'array|nullable',
+            'category_id' => 'array|required|nullable',
         ];
     }
 
